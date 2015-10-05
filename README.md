@@ -34,4 +34,4 @@
 
 ## abort pending rollback due to prior commit confirm by doing a commit check
 
-    ./junos_commit_check.py foo 10.255.1.100
+    $ ./junos_commit_check.py foo 10.255.1.100
