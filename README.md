@@ -6,7 +6,8 @@
     2a01:babe:0002:0000:0000:0000:0000:0000/48
     2a01:babe:0003:0000:0000:0000:0000:0000/48
 
-    ## print junos device port status
+## print junos device port status
+
     $ ./junos_port_status.py foo 10.255.1.100
     Interface   Description                             Status  Time since last flap
     --------------------------------------------------------------------------------
