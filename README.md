@@ -1,11 +1,11 @@
-# subnet splitter
+## subnet splitter
 $ ./split.py 2a01:babe::/32 48 4
 2a01:babe:0000:0000:0000:0000:0000:0000/48
 2a01:babe:0001:0000:0000:0000:0000:0000/48
 2a01:babe:0002:0000:0000:0000:0000:0000/48
 2a01:babe:0003:0000:0000:0000:0000:0000/48
 
-# print junos device port status
+## print junos device port status
 $ ./junos_port_status.py foo 10.255.1.100
 Interface   Description                             Status  Time since last flap
 --------------------------------------------------------------------------------
@@ -30,5 +30,5 @@ ge-0/1/7                                            down    2015-09-11 09:58:05 
 ge-0/1/8                                            down    2015-09-11 09:58:05 CEST (3w3d 13:27 ago)
 ge-0/1/9                                            down    2015-09-11 09:58:05 CEST (3w3d 13:27 ago)
 
-# abort pending rollback due to prior commit confirm by doing a commit check
-./junos_commit_check.py foo 10.255.1.100
+## abort pending rollback due to prior commit confirm by doing a commit check
+    ./junos_commit_check.py foo 10.255.1.100
