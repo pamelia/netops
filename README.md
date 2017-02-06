@@ -8,7 +8,7 @@
 
 ## print junos device port status
 
-    $ ./junos_port_status.py foo 10.255.1.100
+    $ ./junos_port_status.py 10.255.1.100
     Interface   Description                             Status  Time since last flap
     --------------------------------------------------------------------------------
     ge-0/0/0    foo description                         up      2015-09-18 13:35:20 CEST (2w3d 09:50 a    go)
@@ -34,4 +34,9 @@
 
 ## abort pending rollback due to prior commit confirm by doing a commit check
 
-    $ ./junos_commit_check.py foo 10.255.1.100
+    $ ./junos_commit_check.py 10.255.1.100
+
+## show interfaces with framing errors > 0
+
+    $ ./junos_port_errors.py 10.255.1.100
+
