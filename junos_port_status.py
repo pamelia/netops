@@ -1,13 +1,22 @@
 #!/usr/bin/env python
-'''Usage: junos_port_status.py USER HOST
-'''
+"""Usage: junos_port_status.py [--user=<login>] HOST
+"""
 
+import os
 from docopt import docopt
-from junos_lib import *
+from junos_lib import Junos
 
 
-def port_status(dev):
-    ports = PhyPortTable(dev).get()
+def main():
+    args = docopt(__doc__)
+
+    if args['--user']:
+        user = args['--user']
+    else:
+        user = os.environ['USER']
+
+    junos = Junos(user, args['HOST'])
+    ports = junos.port_status()
 
     print('{}{}{}{}'.format(
         'Interface'.ljust(12),
@@ -15,7 +24,9 @@ def port_status(dev):
         'Status'.ljust(8),
         'Time since last flap'.ljust(45))
     )
+
     print '-' * 80
+
     for port in ports:
         if port.description is None:
             port.description = ''
@@ -27,6 +38,4 @@ def port_status(dev):
         )
 
 if __name__ == '__main__':
-    args = docopt(__doc__)
-    dev = junos_connect(args['USER'], args['HOST'])
-    port_status(dev)
+    main()

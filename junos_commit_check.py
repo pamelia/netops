@@ -1,26 +1,23 @@
 #!/usr/bin/env python
-'''Usage: junos_commit_check.py USER HOST
-'''
+"""Usage: junos_commit_check.py [--user=<login>] HOST
+"""
 
+import os
 from docopt import docopt
-from jnpr.junos.utils.config import Config
-from junos_lib import *
+from junos_lib import Junos
 
 
-def commit_check(dev):
-    cu = Config(dev)
+def main():
+    args = docopt(__doc__)
 
-    try:
-        cu.lock()
-        cu.commit_check()
-        cu.unlock()
-    except Exception as e:
-        print('error: {}'.format(str(e)))
+    if args['--user']:
+        user = args['--user']
+    else:
+        user = os.environ['USER']
 
-    dev.close()
+    junos = Junos(user, args['HOST'])
+    junos.commit_check()
 
 
 if __name__ == '__main__':
-    args = docopt(__doc__)
-    dev = junos_connect(args['USER'], args['HOST'])
-    commit_check(dev)
+    main()
